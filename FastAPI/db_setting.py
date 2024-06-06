@@ -3,20 +3,12 @@ from sqlalchemy_utils import database_exists, create_database
 from sqlalchemy.orm import sessionmaker, scoped_session
 from db_model import Base
 
-user_name = 'NAME'
-password = 'PASSWORD'
-host = 'HOST'
-database_name = 'magnetic_field_map'
+from env import config
 
-DATABASE = 'mysql://%s:%s2%s/%s?charset=utf8' % (
-    user_name,
-    password,
-    host,
-    database_name,
-)
+URL = config.URL
 
 ENGINE = create_engine(
-    DATABASE,
+    URL,
     encoding='utf-8',
     echo=True
 )
